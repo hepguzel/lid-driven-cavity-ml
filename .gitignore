@@ -218,3 +218,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# ---- OpenFOAM ----
+# Solver output time directories (0/ is kept)
+[1-9]*/
+0.[0-9]*/
+# Parallel decomposition
+processor*/
+# Logs and ParaView helper files
+log.*
+*.foam
+*.OpenFOAM
+# Runtime-compiled code
+dynamicCode/
