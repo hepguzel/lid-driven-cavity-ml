@@ -51,7 +51,7 @@ Important: there is **only one RF model**. It was trained once; RF(700), RF(701)
 | 1000 | 0.001 | training |
 | 2000 | 0.0005 | training |
 
-- **Mesh:** 80×80. Selected from a mesh independence study at Re = 1000 (20×20, 40×40, 80×80 and 160×160); the results were validated against the benchmark solution of Ghia et al. (1982).
+- **Mesh:** 80×80. Selected from a mesh independence study at Re = 1000 (20×20, 40×40, 80×80 and 160×160); the results were validated against the benchmark solution of Ghia et al. (1982) (see [References](#references)).
 
 <img src="mesh_independence.png" alt="Mesh independence study" width="400">
 
@@ -79,7 +79,7 @@ scikit-learn `RandomForestRegressor` with 100 trees (`n_estimators=100`) and fix
 | RMSE | 0.039 | 0.033 |
 | Maximum absolute error | 0.109 | 0.115 |
 
-At first sight, R² ≈ 0.97 looks good. The mean error is 3–4% of the lid velocity, and around 11% at the worst points.
+At first sight, R² ≈ 0.97 looks good. The RMSE is 3–4% of the lid velocity, and the error reaches about 11% at the worst points.
 
 ### 4.2 Copy test: is this R² actually good?
 
@@ -93,7 +93,7 @@ All three predictions were scored against the same reference, CFD(700):
 | Copy of CFD(400) | 0.966 | 0.972 |
 | Copy of CFD(1000) | **0.989** | **0.991** |
 
-The observation follow from the table:
+This observation follows from the table:
 
 **The RF does no better than copying Re = 400.** The R² between RF(700) and CFD(700) (0.966 for Ux) equals the R² between CFD(400) and CFD(700). In other words, the RF prediction is no better than putting the Re = 400 CFD solution, unchanged, in place of Re = 700.
    
@@ -187,3 +187,9 @@ A neural network (MLP), which can learn a continuous function of Re, will be tra
 | `rf_cavity_v2.py` | RF training, metrics, copy tests, step test, centreline plot |
 | `rf_centerline_Re700.png` | Centreline profiles |
 | `mesh_independence.png` | Mesh independence study |
+
+---
+
+## References
+
+Ghia, U., Ghia, K. N., & Shin, C. T. (1982). High-Re solutions for incompressible flow using the Navier-Stokes equations and a multigrid method. *Journal of Computational Physics*, 48(3), 387–411.
