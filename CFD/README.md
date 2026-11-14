@@ -28,8 +28,6 @@ A square box whose top lid moves to the right at constant speed while the other 
 
 All cases were run to steady state, until the initial residuals fell below 10⁻⁶. An end time of 50 s was sufficient for all cases except Re = 1500, where the residuals were still at 1.3 × 10⁻⁶ at 50 s; this case was continued to 100 s (residuals ≈ 1.2 × 10⁻⁷).
 
-<!-- TODO: add time step, solver settings and run commands if wanted -->
-
 ---
 
 ## Mesh

@@ -14,7 +14,7 @@ Each model is compared against simple baselines that need no model at all:
 ## Results
 
 - The **Random Forest** does not beat the copy baseline: at Re = 700 it returns the Re = 400 solution almost unchanged. See the [RF report](RF/README.md).
-- - The **neural network** interpolates: at the unseen Re = 700 its prediction matches the CFD solution with an RMSE of about 0.005, i.e. 0.5% of the lid velocity, and at Re = 1500 with about 0.006. Its largest errors are in the top corners of the cavity. Compared with the averaging baseline (the average of CFD(400) and CFD(1000)), its RMSE is about half at Re = 700, but no better at Re = 1500. See the [NN report](NN/README.md).
+- The **neural network** interpolates: at the unseen Re = 700 its prediction matches the CFD solution with an RMSE of about 0.005, i.e. 0.5% of the lid velocity, and at Re = 1500 with about 0.006. Its largest errors are in the top corners of the cavity. Compared with the averaging baseline (the average of CFD(400) and CFD(1000)), its RMSE is about half at Re = 700, but no better at Re = 1500. See the [NN report](NN/README.md).
 - A **physics-informed neural network (PINN)** is planned as the next model.
 
 

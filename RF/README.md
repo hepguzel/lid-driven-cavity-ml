@@ -170,6 +170,7 @@ A neural network (MLP), which can learn a continuous function of Re, was trained
 | `rf_centerline_Re700.png` | Centreline profiles |
 
 The CFD data (`cavity_data.csv`) and the mesh independence study are in [`CFD/`](../CFD/).
+
 ---
 
 ## References
