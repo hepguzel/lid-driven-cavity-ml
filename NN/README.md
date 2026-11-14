@@ -215,7 +215,6 @@ The expected advantages are physical consistency and the ability to learn from f
 | File | Contents |
 |---|---|
 | `nn_cavity.ipynb` | Data preparation, MLP training, metrics, baselines, figures |
-| `NN-01-miniBatch-scheduler.ipynb` | Data preparation, MLP training, metrics, baselines, figures |
 | `NN_centerline_Re700.png` | Centreline profiles at Re = 700 |
 | `NN_centerline_Re1500.png` | Centreline profiles at Re = 1500 |
 | `CFD_fields_Re700.png` | CFD velocity field at Re = 700 |
