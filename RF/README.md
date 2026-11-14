@@ -20,6 +20,7 @@ To test this, the Re = 700 CFD solution was held out from training and used only
 
 ---
 
+
 ## 2. Notation
 
 The report deals with two kinds of fields: the actual solutions computed by OpenFOAM, and the predictions of the RF. To keep them apart, the following notation is used throughout:
@@ -39,21 +40,7 @@ Important: there is **only one RF model**. It was trained once; RF(700), RF(701)
 
 ### CFD data
 
-- **Problem:** 2D lid-driven cavity. A square box whose top lid moves to the right at constant speed while the other walls are stationary. Through shear, the lid drags the fluid inside and drives a vortex.
-- **Solver:** OpenFOAM `icoFoam` (incompressible, laminar).
-- **Reynolds number:** Re = U_lid · L / ν. The lid velocity (U_lid = 1 m/s) and the cavity size (L = 1 m) were kept fixed; different Reynolds numbers were obtained by changing the kinematic viscosity ν. Since U_lid = 1, the velocities are already non-dimensional (u / U_lid).
-
-| Re | ν (m²/s) | Use |
-|---|---|---|
-| 100 | 0.01 | training |
-| 400 | 0.0025 | training |
-| 700 | 0.00143 | **test** |
-| 1000 | 0.001 | training |
-| 2000 | 0.0005 | training |
-
-- **Mesh:** 80×80. Selected from a mesh independence study at Re = 1000 (20×20, 40×40, 80×80 and 160×160); the results were validated against the benchmark solution of Ghia et al. (1982) (see [References](#references)).
-
-<img src="mesh_independence.png" alt="Mesh independence study" width="400">
+2D lid-driven cavity solved with OpenFOAM `icoFoam` on an 80×80 mesh, validated against Ghia et al. (1982). Different Reynolds numbers were obtained by changing the viscosity. The solver, cases, mesh independence study and validation are described in [CFD/README.md](../CFD/README.md).
 
 ### Dataset
 
@@ -171,11 +158,7 @@ In other words, the RF learns a **piecewise constant** function in Re, while the
 
 ## 7. Next step
 
-A neural network (MLP), which can learn a continuous function of Re, will be trained and evaluated with the same tests:
-
-- the same test data: CFD(700),
-- the same copy baselines: CFD(400) and CFD(1000),
-- one additional baseline: the simple average of CFD(400) and CFD(1000). If the NN beats this average, it has genuinely learned something in the Re direction.
+A neural network (MLP), which can learn a continuous function of Re, was trained on the same data and evaluated with the same test case, CFD(700), and with one additional baseline: the simple average of CFD(400) and CFD(1000). See the [NN report](../NN/README.md).
 
 ---
 
@@ -183,11 +166,10 @@ A neural network (MLP), which can learn a continuous function of Re, will be tra
 
 | File | Contents |
 |---|---|
-| `cavity_data.csv` | CFD results for all Reynolds numbers (x, y, Re, Ux, Uy, p) |
 | `rf_cavity_v2.py` | RF training, metrics, copy tests, step test, centreline plot |
 | `rf_centerline_Re700.png` | Centreline profiles |
-| `mesh_independence.png` | Mesh independence study |
 
+The CFD data (`cavity_data.csv`) and the mesh independence study are in [`CFD/`](../CFD/).
 ---
 
 ## References
